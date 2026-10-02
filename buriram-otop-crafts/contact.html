@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <!-- 1. Meta Viewport สำหรับ Responsive Design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ติดต่อเรา | ศูนย์รวมข้อมูล OTOP และหัตถกรรมพื้นบ้านจังหวัดบุรีรัมย์</title>
+  <meta name="description" content="แบบฟอร์มติดต่อสอบถามสั่งซื้อสินค้า OTOP หรือสอบถามข้อมูลกลุ่มวิสาหกิจชุมชนหัตถกรรมบุรีรัมย์">
+
+  <!-- Google Fonts: Sarabun (ใช้ฟอนต์เดียวทั้งเว็บ) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Sarabun', 'sans-serif'], // กำหนดฟอนต์หลัก
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 2. ป้องกันการเลื่อนแนวนอน (No Horizontal Scroll) */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: 'Sarabun', sans-serif;
+    }
+
+    /* 3. รูปภาพปรับขนาดตามหน้าจออัตโนมัติ (Responsive Images) */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* 4. สถานะ Focus & Hover ชัดเจนสำหรับปุ่มและลิงก์ (Accessibility & UI/UX) */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid #f59e0b !important; /* เส้นขอบสีส้มทองสว่างเมื่อกด Tab เลือก */
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="bg-amber-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+
+  <header class="bg-stone-800 text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold text-amber-500"><i class="fa-solid fa-gem" aria-hidden="true"></i> OTOP บุรีรัมย์</a>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-amber-400 font-medium">หน้าแรก</a>
+        <a href="listing.html" class="hover:text-amber-400 font-medium">สินค้าและหัตถกรรม</a>
+        <a href="contact.html" class="hover:text-amber-400 font-medium text-amber-400">ติดต่อเรา</a>
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-stone-700 transition" aria-label="สลับโหมดสว่าง/มืด"><i id="theme-icon" class="fas fa-moon"></i></button>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-amber-500" aria-label="เปิดเมนูมือถือ"><i class="fas fa-bars"></i></button>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden bg-stone-900 border-t border-stone-700 px-4 pt-2 pb-4 space-y-2">
+      <a href="index.html" class="block py-2 hover:text-amber-400 font-medium">หน้าแรก</a>
+      <a href="listing.html" class="block py-2 hover:text-amber-400 font-medium">สินค้าและหัตถกรรม</a>
+      <a href="contact.html" class="block py-2 text-amber-400 font-medium">ติดต่อเรา</a>
+    </nav>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-10 flex-grow w-full">
+    <section class="bg-white dark:bg-stone-800 p-6 md:p-8 rounded-xl shadow-md border border-stone-200 dark:border-stone-700">
+      <!-- H1 หนึ่งเดียวของหน้า -->
+      <h1 class="text-2xl font-bold mb-2 text-stone-800 dark:text-amber-400">แบบฟอร์มติดต่อสอบถาม</h1>
+      <p class="text-stone-500 dark:text-stone-400 mb-6">กรุณากรอกข้อมูลให้ครบถ้วนเพื่อติดต่อสอบถามเกี่ยวกับสินค้า OTOP บุรีรัมย์</p>
+
+      <form id="contact-form" novalidate class="space-y-4">
+        <div>
+          <label for="fullname" class="block text-sm font-semibold mb-1">ชื่อ-นามสกุล *</label>
+          <input type="text" id="fullname" class="w-full p-2.5 border rounded-lg dark:bg-stone-900 dark:border-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+          <p id="name-error" class="text-red-500 text-xs mt-1 hidden">กรุณากรอกชื่อ-นามสกุล</p>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-semibold mb-1">อีเมล *</label>
+          <input type="email" id="email" class="w-full p-2.5 border rounded-lg dark:bg-stone-900 dark:border-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+          <p id="email-error" class="text-red-500 text-xs mt-1 hidden">กรุณากรอกอีเมลให้ถูกต้อง</p>
+        </div>
+
+        <div>
+          <label for="phone" class="block text-sm font-semibold mb-1">เบอร์โทรศัพท์ *</label>
+          <input type="tel" id="phone" class="w-full p-2.5 border rounded-lg dark:bg-stone-900 dark:border-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500">
+          <p id="phone-error" class="text-red-500 text-xs mt-1 hidden">กรุณากรอกเบอร์โทรศัพท์ตัวเลข 9-10 หลัก</p>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-semibold mb-1">ข้อความ *</label>
+          <textarea id="message" rows="4" class="w-full p-2.5 border rounded-lg dark:bg-stone-900 dark:border-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+          <p id="message-error" class="text-red-500 text-xs mt-1 hidden">กรุณากรอกข้อความอย่างน้อย 10 ตัวอักษร</p>
+        </div>
+
+        <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-lg transition shadow-md">
+          <i class="fa-solid fa-paper-plane mr-2" aria-hidden="true"></i>ส่งข้อความ
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-stone-900 text-stone-400 py-6 border-t border-stone-800 text-center">
+    <p>&copy; 2026 ศูนย์รวมข้อมูล OTOP และหัตถกรรมพื้นบ้านจังหวัดบุรีรัมย์</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

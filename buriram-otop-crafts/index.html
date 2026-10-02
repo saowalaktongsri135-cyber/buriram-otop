@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <!-- 1. Meta Viewport สำหรับ Responsive Design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>หน้าแรก | ศูนย์รวมข้อมูล OTOP และหัตถกรรมพื้นบ้านจังหวัดบุรีรัมย์</title>
+  <meta name="description" content="รวบรวมภูมิปัญญาท้องถิ่น สินค้า OTOP และงานฝีมือทรงคุณค่าจากจังหวัดบุรีรัมย์ เช่น ผ้าซิ่นตีนแดง เสื่อกกสาน เครื่องปั้นดินเผา">
+
+  <!-- Google Fonts: Sarabun (ใช้ฟอนต์เดียวทั้งเว็บ) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Sarabun', 'sans-serif'], // กำหนดฟอนต์หลัก
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* 2. ป้องกันการเลื่อนแนวนอน (No Horizontal Scroll) */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: 'Sarabun', sans-serif;
+    }
+
+    /* 3. รูปภาพปรับขนาดตามหน้าจออัตโนมัติ (Responsive Images) */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* 4. สถานะ Focus & Hover ชัดเจนสำหรับปุ่มและลิงก์ (Accessibility & UI/UX) */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid #f59e0b !important; /* เส้นขอบสีส้มทองสว่างเมื่อกด Tab เลือก */
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="bg-amber-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen transition-colors duration-300">
+
+  <!-- Header & Navigation -->
+  <header class="bg-stone-800 text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold flex items-center gap-2 text-amber-500">
+        <i class="fa-solid fa-gem" aria-hidden="true"></i> OTOP บุรีรัมย์
+      </a>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-amber-400 font-medium text-amber-400">หน้าแรก</a>
+        <a href="listing.html" class="hover:text-amber-400 font-medium">สินค้าและหัตถกรรม</a>
+        <a href="contact.html" class="hover:text-amber-400 font-medium">ติดต่อเรา</a>
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-stone-700 transition" aria-label="สลับโหมดสว่าง/มืด">
+          <i id="theme-icon" class="fas fa-moon"></i>
+        </button>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-amber-500 focus:outline-none" aria-label="เปิดเมนูมือถือ">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden bg-stone-900 border-t border-stone-700 px-4 pt-2 pb-4 space-y-2">
+      <a href="index.html" class="block py-2 text-amber-400 font-medium">หน้าแรก</a>
+      <a href="listing.html" class="block py-2 hover:text-amber-400 font-medium">สินค้าและหัตถกรรม</a>
+      <a href="contact.html" class="block py-2 hover:text-amber-400 font-medium">ติดต่อเรา</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow">
+    <!-- Hero Section (H1 หนึ่งเดียวของหน้า) -->
+    <section class="bg-stone-800 text-white py-20 px-4 text-center relative overflow-hidden">
+      <div class="max-w-4xl mx-auto relative z-10">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-amber-400 mb-4">มนต์เสน่ห์หัตถกรรมแห่งเมืองปราสาทหิน</h1>
+        <p class="text-lg md:text-xl text-stone-300 mb-8">รวบรวมภูมิปัญญาท้องถิ่น สินค้า OTOP และงานฝีมือทรงคุณค่าจากชาวบุรีรัมย์ส่งตรงถึงคุณ</p>
+        <a href="listing.html" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-lg transition shadow-lg">
+          <i class="fa-solid fa-store mr-2" aria-hidden="true"></i>สำรวจสินค้าทั้งหมด
+        </a>
+      </div>
+    </section>
+
+    <!-- Highlight Section (หมวดหมู่ภูมิปัญญาโดดเด่น) -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-stone-800 dark:text-amber-400 mb-8 text-center">หมวดหมู่ภูมิปัญญาโดดเด่น</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- การ์ดที่ 1: ผ้าทอพื้นเมือง -->
+        <a href="listing.html?category=woven" class="block group">
+          <article class="bg-white dark:bg-stone-800 rounded-xl p-6 shadow-md hover:shadow-xl border border-stone-200 dark:border-stone-700 transition duration-300 transform group-hover:-translate-y-1">
+            <div class="text-amber-600 dark:text-amber-500 text-3xl mb-4 group-hover:scale-110 transition duration-200">
+              <i class="fa-solid fa-shirt" aria-hidden="true"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">ผ้าทอพื้นเมือง</h3>
+            <p class="text-stone-600 dark:text-stone-300">ผ้าซิ่นตีนแดง เอกลักษณ์ทางวัฒนธรรมการทอผ้าอันล้ำค่าของอำเภอพุทไธสง</p>
+          </article>
+        </a>
+
+        <!-- การ์ดที่ 2: งานสานและของตกแต่ง -->
+        <a href="listing.html?category=crafts" class="block group">
+          <article class="bg-white dark:bg-stone-800 rounded-xl p-6 shadow-md hover:shadow-xl border border-stone-200 dark:border-stone-700 transition duration-300 transform group-hover:-translate-y-1">
+            <div class="text-amber-600 dark:text-amber-500 text-3xl mb-4 group-hover:scale-110 transition duration-200">
+              <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">งานสานและประดิดประดอย</h3>
+            <p class="text-stone-600 dark:text-stone-300">เสื่อกก เครื่องปั้นดินเผา และกระเป๋าสานจากเส้นใยธรรมชาติ</p>
+          </article>
+        </a>
+
+        <!-- การ์ดที่ 3: สมุนไพรและของใช้ -->
+        <a href="listing.html?category=herbs" class="block group">
+          <article class="bg-white dark:bg-stone-800 rounded-xl p-6 shadow-md hover:shadow-xl border border-stone-200 dark:border-stone-700 transition duration-300 transform group-hover:-translate-y-1">
+            <div class="text-amber-600 dark:text-amber-500 text-3xl mb-4 group-hover:scale-110 transition duration-200">
+              <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">สมุนไพรและของใช้</h3>
+            <p class="text-stone-600 dark:text-stone-300">ผลิตภัณฑ์สมุนไพรแปรรูปเพื่อสุขภาพจากวิสาหกิจชุมชน</p>
+          </article>
+        </a>
+
+      </div>
+    </section>
+
+  <footer class="bg-stone-900 text-stone-400 py-6 border-t border-stone-800 text-center">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>&copy; 2026 ศูนย์รวมข้อมูล OTOP และหัตถกรรมพื้นบ้านจังหวัดบุรีรัมย์</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
